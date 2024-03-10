@@ -1,0 +1,115 @@
+$defaultColor: darkgray; 
+$goColor: green; 
+$slowColor: orange;
+$highLightBorder: yellow;
+$stopColor: red;
+$fontColor: white;
+$blackTransparent: rgba(0, 0, 0, 0);
+$black: rgba(0, 0, 0,1);
+$shadowColor: rgba(0, 0, 0, 0.5);
+#container{
+    background-color: $defaultColor;
+    width: 300px;
+    margin: 50px auto;
+    border: 5px solid $black;
+    box-shadow: 0 5px 5px $shadowColor;
+    >.trafficLight{ 
+        padding: 10px 20px;
+        border-radius: 50%;
+        border: 2px solid black;
+        cursor: pointer;
+        background-color: $defaultColor;
+        color: white;
+        margin: 10px auto;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, $blackTransparent 0%, $shadowColor 78%, $black 100%);
+        &:hover{
+            border-color: $highLightBorder;
+            box-shadow: 0 5px 5px $shadowColor;
+        }
+        &:active{
+           transform: scale(0.9);
+        }
+        &--stop{  @extend .trafficLight;
+                  background-color: $stopColor;
+                  &:active{
+                    background-color: darken( $stopColor, 20%)
+                 }
+                  
+        }
+        &--slow{  @extend .trafficLight;
+            background-color: $slowColor;
+            &:active{
+                background-color: darken( $slowColor, 20%)
+             }
+            
+       }
+       &--go{  @extend .trafficLight;
+        background-color: $goColor;
+        &:active{
+            background-color: darken( $goColor, 20%)
+         }
+        
+      }
+    }
+    
+}
+
+ /* exercise */
+
+$primary-color: #7ED957;
+$primary-color-lighter: lighten($primary-color, 20%);
+$primary-color-darker: darken($primary-color, 20%);
+$secondary-color: #4f9d92;
+
+%box {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 4px 3px 19px 0px rgba(0, 0, 0, 0.3);
+}
+
+.box__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  font-family: sans-serif;
+
+  .box {
+    @extend %box;
+    &-primary {
+      background-color: $primary-color;
+      color: #fff;
+      
+      &-lighter {
+        background-color: $primary-color-lighter;
+        padding-top: 10;
+        padding-bottom: 10;
+      }
+
+      &-darker {
+        background-color: $primary-color-darker;
+      }
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+
+    &-secondary {
+      background-color: $secondary-color;
+      color: #000;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+    
+      
+    
+  
+  
